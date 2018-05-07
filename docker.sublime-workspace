@@ -3,19 +3,42 @@
 	{
 		"selected_items":
 		[
+			[
+				"Work",
+				"WORKDIR"
+			],
+			[
+				"PHP_5",
+				"PHP_5_DIR"
+			],
+			[
+				"lib",
+				"libiconv"
+			],
+			[
+				"PHP_5_",
+				"PHP_5_SRC_DIR"
+			],
+			[
+				"PHP_7_",
+				"PHP_7_INI_DIR"
+			],
+			[
+				"PHP",
+				"PHP_5_DIR"
+			],
+			[
+				"php",
+				"php7116"
+			],
+			[
+				"sour",
+				"sources"
+			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "/code/react-demo/src/app/rawDataProcessor.js",
-			"settings":
-			{
-				"buffer_size": 2444,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -71,13 +94,24 @@
 	"expanded_folders":
 	[
 		"/code/docker",
-		"/code/docker/han-maker-php-nginx-docker-env",
 		"/code/react-demo",
 		"/code/react-demo/src",
 		"/code/react-demo/src/app"
 	],
 	"file_history":
 	[
+		"/code/docker/php-5.5.9-fpm/docker-run.sh",
+		"/code/docker/php-5.5.9-fpm/Dockerfile",
+		"/code/docker/han-env/sources.list",
+		"/code/docker/stand/docker-php-entrypoint",
+		"/code/docker/stand/Dockerfile",
+		"/code/docker/han-env/Dockerfile",
+		"/code/docker/stand/docker-php-ext-enable",
+		"/code/docker/stand/docker-php-ext-configure",
+		"/code/docker/stand/docker-php-ext-install",
+		"/code/docker/stand/docker-php-source",
+		"/code/docker/sources.list",
+		"/code/docker/han-maker-php-nginx-docker-env/Dockerfile",
 		"/code/react-demo/package.json",
 		"/code/react-demo/node_modules/.recently_updates.txt",
 		"/code/react-demo/src/package.json",
@@ -101,6 +135,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$PHP_ROOT_DIR/sbin:",
+			"docker-php-sour",
+			"/usr/src/php",
+			"zlib",
+			"openssl",
+			"--with-pdo-mysql",
+			"calendar",
+			"\nENV PHP_5_EXTRA_CONFIGURE_ARGS --enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data \\\n\t--enable-mbstring --with-mcrypt",
+			"PHP_5_EXTRA",
+			"PHP_EXTRA",
+			"PHP_INI",
+			"GPG_KEYS",
+			"with-iconv",
+			"iconv",
+			"\\\n",
+			"apt-get install ",
+			"apt-get install -y",
+			"/\n",
+			"10559",
+			"\nENV PHP_5_CONFIGURE_ARGS --prefix=$PHP_5_DIR \\\n                        --enable-fpm \\\n                        --enable-mysqlnd \\\n                        --enable-mbstring \\\n                        --enable-zip \\\n                        --enable-calendar \\\n                        --enable-ftp \\\n                        --enable-intl \\\n                        --with-mysqli \\\n                        --with-pdo-mysql \\\n                        --with-pdo-pgsql \\\n                        --with-openssl \\\n                        --with-curl \\\n                        --with-gd \\\n                        --with-mhash \\\n                        --with-mcrypt \\\n                        --with-xmlrpc \\\n                        --with-config-file-path=$PHP_5_INI_DIR \\\n                        --with-config-file-scan-dir=$PHP_5_INI_DIR",
+			" \n",
 			"express"
 		],
 		"highlight": true,
@@ -119,39 +174,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/code/react-demo/src/app/rawDataProcessor.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2342,
-								2342
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1224.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -161,7 +185,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 40.0
 	},
 	"layout":
 	{
