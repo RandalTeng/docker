@@ -29,3 +29,5 @@ XDEBUG_CONFIG=remote_host=host.docker.internal # php xdebug host.
 ``` config
 set $code_root "code_root";
 ```
+
+- Create the `conf/nginx/cert` directory and put your cert to it, if you want to setup a HTTPS server.
