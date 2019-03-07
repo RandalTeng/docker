@@ -1,52 +1,93 @@
 version: "3.7"
 
+networks:
+    web:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                -
+                    subnet: 172.16.253.0/24
+
 services:
     nginx:
+        env_file: .env
         image: nginx:latest
         ports:
             - "80:80"
+            - "443:443"
         volumes:
-            - "/code:/code:rw"
-            - "/code/local/docker/conf/nginx:/etc/nginx:ro"
+            - "${CODE_ROOT}:${CODE_ROOT}:rw"
+            - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
+            - "${DOCKER_CONF_ROOT}/nginx:/etc/nginx:ro"
         depends_on:
             - php-fpm-5.6.38
             - php-fpm-7.2.12
-        links:
-            - php-fpm-5.6.38
-            - php-fpm-7.2.12
+        networks:
+            web:
+                aliases:
+                    - nginx
+        restart: unless-stopped
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "1"
 
     redis:
+        env_file: .env
         image: redis:latest
         ports:
             - "6379:6379"
         volumes:
-            - "/code/redis-data:/data:rw"
+            - "${REDIS_DATA}:/data:rw"
             # Docker Redis server have no configure file.
+        networks:
+            web:
+                aliases:
+                    - redis
+        restart: unless-stopped
 
     php-fpm-5.6.38:
+        env_file: .env
         image: t895469945/php:5.6.38-fpm
         ports:
             - "15638:9000"
         volumes:
-            - "/code:/code:rw"
-            - "/code/local/docker/conf/php-5.6:/usr/local/php/etc:ro"
+            - "${CODE_ROOT}:${CODE_ROOT}:rw"
+            - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
+            - "${DOCKER_CONF_ROOT}/php-5.6:/usr/local/php/etc:ro"
         depends_on:
             - redis
-        links:
-            - redis
+        networks:
+            web:
+                aliases:
+                    - php-fpm-5.6.38
+        restart: unless-stopped
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "1"
 
     php-fpm-7.2.12:
+        env_file: .env
         image: t895469945/php:7.2.12-fpm
         ports:
             - "17212:9000"
         volumes:
-            - "/code:/code:rw"
-            - "/code/local/docker/conf/php-7.2:/usr/local/php/etc:ro"
+            - "${CODE_ROOT}:${CODE_ROOT}:rw"
+            - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
+            - "${DOCKER_CONF_ROOT}/php-7.2:/usr/local/php/etc:ro"
         depends_on:
             - redis
-        links:
-            - redis
-
-
-
-
+        networks:
+            web:
+                aliases:
+                    - php-fpm-7.2.12
+        restart: unless-stopped
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "1"

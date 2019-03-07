@@ -1,1 +1,1 @@
-docker run -d -p 10270:1027 --name jet-escape --restart=always jet-escape
+docker run -d -p 10270:1027 --name jet-escape --restart=unless-stopped jet-escape
