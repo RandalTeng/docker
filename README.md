@@ -13,7 +13,7 @@ the php(v7.1) based apache, volume 3 folder<br>
 /var/www/html      -- the project floder<br>
 
 # NOTICE
-- You should create a `.env` file in this directory to set docker compose ENV
+- You should create a `/PATH/TO/ROOT/.env` file in this directory to set docker compose ENV
 
 Demo of the env file:
 ``` docker
@@ -25,9 +25,9 @@ DOCKER_CONF_ROOT=`pwd`/docker/conf # current directory.
 XDEBUG_CONFIG=remote_host=host.docker.internal # php xdebug host.
 ```
 
-- And then you should create a `env.conf` to set the normal code root for nginx:
+- And then you should create a `/PATH/TO/ROOT/conf/nginx/conf.fpm/env.conf` to set the normal code root for nginx:
 ``` config
 set $code_root "code_root";
 ```
 
-- Create the `conf/nginx/cert` directory and put your cert to it, if you want to setup a HTTPS server.
+- Create the `/PATH/TO/ROOT/conf/nginx/cert` directory and put your cert to it, if you want to setup a HTTPS server.
