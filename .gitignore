@@ -1,8 +1,9 @@
 .DS_Store
 .env
 
-
 # editor directory
 .idea
 
 *.sublime-project
+
+docker-compose.override.yml
