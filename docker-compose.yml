@@ -33,6 +33,10 @@ services:
             options:
                 max-size: "10m"
                 max-file: "1"
+        privileged: true # 开启特权模式, 修改内核参数
+        sysctls:
+            - net.core.somaxconn=65535
+            - net.ipv4.tcp_syncookies=0
 
     redis:
         env_file: .env
@@ -52,7 +56,7 @@ services:
         env_file: .env
         image: t895469945/php:5.6.38-fpm
         ports:
-            - "15638:9000"
+            - "9000"
         volumes:
             - "${CODE_ROOT}:${CODE_ROOT}:rw"
             - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
@@ -69,12 +73,13 @@ services:
             options:
                 max-size: "10m"
                 max-file: "1"
+        privileged: true # 开启特权模式, 修改内核参数
 
     php-fpm-7.2.12:
         env_file: .env
         image: t895469945/php:7.2.12-fpm
         ports:
-            - "17212:9000"
+            - "9000"
         volumes:
             - "${CODE_ROOT}:${CODE_ROOT}:rw"
             - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
@@ -91,3 +96,7 @@ services:
             options:
                 max-size: "10m"
                 max-file: "1"
+        privileged: true # 开启特权模式, 修改内核参数
+        sysctls:
+            - net.core.somaxconn=65535
+            - net.ipv4.tcp_syncookies=0
