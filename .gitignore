@@ -1,5 +1,6 @@
 .DS_Store
 .env
+default.conf.vps
 
 # editor directory
 .idea
