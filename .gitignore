@@ -11,4 +11,5 @@ docker-compose.override.yml
 
 es/data-*
 es/logs/*
+jenkins/jenkinsAdminPassword
 web/redis/data/*
