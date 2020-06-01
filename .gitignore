@@ -8,3 +8,7 @@ default.conf.vps
 *.sublime-project
 
 docker-compose.override.yml
+
+es/data-*
+es/logs/*
+web/redis/data/*

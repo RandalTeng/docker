@@ -17,8 +17,8 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - "${CODE_ROOT}:${CODE_ROOT}:rw"
-            - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
+            - "${CODE_ROOT}:${TARGET_ROOT}:rw"
+            - "${CODE_LOCAL_ROOT}:${TARGET_LOCAL_ROOT}:rw"
             - "${DOCKER_CONF_ROOT}/nginx:/etc/nginx:ro"
         depends_on:
             - php-fpm-5.6.38
@@ -58,8 +58,8 @@ services:
         ports:
             - "9000"
         volumes:
-            - "${CODE_ROOT}:${CODE_ROOT}:rw"
-            - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
+            - "${CODE_ROOT}:${TARGET_ROOT}:rw"
+            - "${CODE_LOCAL_ROOT}:${TARGET_LOCAL_ROOT}:rw"
             - "${DOCKER_CONF_ROOT}/php-5.6:/usr/local/php/etc:ro"
         depends_on:
             - redis
@@ -81,8 +81,8 @@ services:
         ports:
             - "9000"
         volumes:
-            - "${CODE_ROOT}:${CODE_ROOT}:rw"
-            - "${CODE_LOCAL_ROOT}:${CODE_LOCAL_ROOT}:rw"
+            - "${CODE_ROOT}:${TARGET_ROOT}:rw"
+            - "${CODE_LOCAL_ROOT}:${TARGET_LOCAL_ROOT}:rw"
             - "${DOCKER_CONF_ROOT}/php-7.2:/usr/local/php/etc:ro"
         depends_on:
             - redis

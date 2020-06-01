@@ -1,0 +1,9 @@
+cluster.name: local-es
+cluster.initial_master_nodes: ["node-01"]
+node.master: true
+node.data: true
+network.host: 0.0.0.0
+discovery.seed_hosts:
+  - "node-01"
+  - "node-02"
+  - "node-03"
