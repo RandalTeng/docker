@@ -33,10 +33,10 @@ services:
             options:
                 max-size: "10m"
                 max-file: "1"
-        privileged: true # 开启特权模式, 修改内核参数
-        sysctls:
-            - net.core.somaxconn=65535
-            - net.ipv4.tcp_syncookies=0
+        privileged: true
+        #sysctls:
+        #    - net.core.somaxconn=65535
+        #    - net.ipv4.tcp_syncookies=0
 
     redis:
         env_file: .env
@@ -73,7 +73,7 @@ services:
             options:
                 max-size: "10m"
                 max-file: "1"
-        privileged: true # 开启特权模式, 修改内核参数
+        privileged: true
 
     php-fpm-7.2.12:
         env_file: .env
@@ -96,7 +96,7 @@ services:
             options:
                 max-size: "10m"
                 max-file: "1"
-        privileged: true # 开启特权模式, 修改内核参数
-        sysctls:
-            - net.core.somaxconn=65535
-            - net.ipv4.tcp_syncookies=0
+        privileged: true
+        #sysctls:
+        #    - net.core.somaxconn=65535
+        #    - net.ipv4.tcp_syncookies=0
