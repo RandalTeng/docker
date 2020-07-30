@@ -19,6 +19,7 @@ function checkAndResetContainerName() {
 
 hostBackupDir="${JENKINS_BACKUP_DIR}"
 hostBackupFileName="$1"
+targetCodeDir="$2"
 jenkinsHomeParentDir="/var" && readonly jenkinsHomeParentDir
 containerBackupFileName="${jenkinsHomeParentDir}/restore.tar" && readonly containerBackupFileName
 jenkinsHomeDirName="${jenkinsHomeParentDir}/jenkins_home" && readonly jenkinsHomeDirName
@@ -63,8 +64,8 @@ echo "------ Create data container end. ------"
 echo "------ Create main container start. ------"
 createContainer=$(docker run -d \
     --volumes-from ${jenkinsDataContainerName} \
-    --network docker_web \
-    -v /code/phpcdr.com:${jenkinsHomeDirName}/phpcdr.com \
+    --network web_web \
+    -v ${targetCodeDir}:${jenkinsHomeDirName}/phpcdr.com:rw \
     --name ${containerName} jenkins/jenkins:lts)
 echo "------ Create main container end. ------"
 
