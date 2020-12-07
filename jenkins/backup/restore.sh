@@ -17,32 +17,41 @@ function checkAndResetContainerName() {
     return 0
 }
 
-hostBackupDir="${JENKINS_BACKUP_DIR}"
-hostBackupFileName="$1"
-targetCodeDir="$2"
+function findLastPosition() {
+    strToCheck=${1-""}
+    charToSearch=${2-"/"}
+    return $(echo "$strToCheck" | awk -F ''$charToSearch'' '{printf "%d", length($0)-length($NF)}')
+}
+
+hostBackupDir=${JENKINS_BACKUP_DIR-"./"}
+hostBackupFileName=${1-""}
+targetCodeDir=${2-""}
 jenkinsHomeParentDir="/var" && readonly jenkinsHomeParentDir
 containerBackupFileName="${jenkinsHomeParentDir}/restore.tar" && readonly containerBackupFileName
 jenkinsHomeDirName="${jenkinsHomeParentDir}/jenkins_home" && readonly jenkinsHomeDirName
 jenkinsDataContainerName='jenkins-data' && readonly jenkinsDataContainerName
 
 containerName="jenkins"
+a=$(findLastPosition ${targetCodeDir})
+lastDesPos=$?
+echo $lastDesPos
+targetCodeRoot=${targetCodeDir:0:lastDesPos}
+echo $targetCodeRoot
+targetCodeDirName=${targetCodeDir:lastDesPos}
+echo $targetCodeDirName
+exit 0
 
-if [ "${hostBackupDir:-1:1}" == "/" ]
-then
-    hostBackupDir=${hostBackupDir:-1}/
+if [ "${hostBackupDir:-1:1}" != "/" ]; then
+    hostBackupDir="${hostBackupDir}/"
 fi
-
-if [ ! -n hostBackupFileName ]
-then
+if [ ! -n hostBackupFileName ]; then
     echo "Backup file is require."
     exit 1
 fi
-if [ "${hostBackupFileName:0:1}" != "/" ]
-then
+if [ "${hostBackupFileName:0:1}" != "/" ]; then
     hostBackupFileName="$hostBackupDir$hostBackupFileName"
 fi
-if [ ! -e $hostBackupFileName ]
-then
+if [ ! -e $hostBackupFileName ]; then
     echo "Backup file \`$hostBackupFileName\` does not exists."
     exit 2
 fi
