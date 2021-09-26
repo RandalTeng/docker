@@ -54,13 +54,13 @@ services:
 
     php-fpm-5.6.38:
         env_file: .env
-        image: t895469945/php:5.6-fpm
+        image: t895469945/php:5.6.38-fpm
         ports:
             - "9000"
         volumes:
             - "${CODE_ROOT}:${TARGET_ROOT}:rw,cached"
             - "${CODE_LOCAL_ROOT}:${TARGET_LOCAL_ROOT}:rw,cached"
-            - "${DOCKER_CONF_ROOT}/php-5.6:/usr/local/etc/php:ro"
+            - "${DOCKER_CONF_ROOT}/php-5.6:/usr/local/php/etc:ro"
         depends_on:
             - redis
         networks:
