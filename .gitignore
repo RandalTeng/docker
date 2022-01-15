@@ -4,6 +4,7 @@ default.conf.vps
 
 # editor directory
 .idea
+.vscode
 
 *.sublime-project
 
